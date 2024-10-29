@@ -9,7 +9,10 @@ const options = {
   }
 }
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  _: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   const { id } = await params
   const response = await fetch(
     `${baseUrl}/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false`,
