@@ -7,7 +7,10 @@ createJiti(fileURLToPath(import.meta.url)).import('./src/env.mjs')
 
 const nextConfig: NextConfig = {
   /* config options here */
-  reactStrictMode: true
+  reactStrictMode: true,
+  images: {
+    domains: ['images.unsplash.com']
+  }
 }
 
 export default nextConfig
