@@ -1,10 +1,10 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { CryptoPriceWithId } from '@/types'
+import { TCryptoPriceWithId } from '@/types'
 
 interface CryptoCardProps {
-  data: CryptoPriceWithId
+  data: TCryptoPriceWithId
 }
 
 const CryptoCard: React.FC<CryptoCardProps> = ({ data }) => {

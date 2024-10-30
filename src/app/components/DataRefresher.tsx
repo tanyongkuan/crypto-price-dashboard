@@ -5,26 +5,32 @@ import { useEffect } from 'react'
 interface DataRefresherProps {
   onRefresh: () => Promise<void>
   interval?: number // Allow customizable refresh interval
-  enabled?: boolean // Allow disabling the refresh
+  skipInitialFetch?: boolean // Allow disabling the refresh
+  enabled?: boolean
 }
 
 const DataRefresher: React.FC<DataRefresherProps> = ({
   onRefresh,
   interval = 300000, // Default to 5 minutes
-  enabled = true
+  skipInitialFetch = false,
+  enabled = false
 }) => {
   useEffect(() => {
-    if (!enabled) return
+    if (!enabled) {
+      return
+    }
 
-    // Initial refresh
-    onRefresh()
+    if (!skipInitialFetch) {
+      // Perform initial fetch if not skipping
+      onRefresh()
+    }
 
     // Set up interval
     const intervalId = setInterval(onRefresh, interval)
 
     // Cleanup on unmount
     return () => clearInterval(intervalId)
-  }, [onRefresh, interval, enabled])
+  }, [onRefresh, interval, skipInitialFetch, enabled])
 
   return null
 }

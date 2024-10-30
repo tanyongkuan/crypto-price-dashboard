@@ -1,19 +1,23 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { CryptoDetail } from '@/types'
+import { TCryptoDetail } from '@/types'
 import DataRefresher from '@/app/components/DataRefresher'
 import { fetchCryptoDetail } from '@/lib/fetchCryptoData'
 
 export default function CryptoDetailClient({
   id,
-  initialData
+  initialData,
+  errorMessage = ''
 }: {
   id: string
-  initialData: CryptoDetail
+  initialData: TCryptoDetail
+  errorMessage: string
 }) {
   const [cryptoDetails, setCryptoDetails] = useState(initialData)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(errorMessage)
+
+  console.log(cryptoDetails)
 
   const handleRefresh = useCallback(async () => {
     try {
@@ -29,10 +33,9 @@ export default function CryptoDetailClient({
     <>
       {error && <div className="text-red-500">{error}</div>}
       <div className="mx-auto max-w-md rounded-lg bg-gray-900 p-6 text-white shadow-lg">
-        {error && <div className="text-red-500">{error}</div>}
-        {!crypto && !error && <div className="p-4">Loading...</div>}
+        {!cryptoDetails && !error && <div className="p-4">Loading...</div>}
 
-        {crypto && (
+        {Object.keys(cryptoDetails).length > 0 && (
           <>
             <h1 className="mb-4 text-3xl font-bold">{cryptoDetails.name}</h1>
             <p className="text-xl">
@@ -48,7 +51,12 @@ export default function CryptoDetailClient({
         )}
 
         {/* Use DataRefresher to auto-refresh every 2 minutes */}
-        <DataRefresher onRefresh={handleRefresh} interval={120000} />
+        <DataRefresher
+          onRefresh={handleRefresh}
+          interval={120000}
+          skipInitialFetch
+          enabled={!error}
+        />
       </div>
     </>
   )

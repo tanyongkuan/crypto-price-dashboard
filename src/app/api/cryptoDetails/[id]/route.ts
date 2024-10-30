@@ -1,6 +1,8 @@
+import { env } from '@/env.mjs'
 import { NextResponse } from 'next/server'
+import { TCryptoData, TCryptoDetail } from '@/types'
 
-const baseUrl = process.env.COIN_GECKO_API?.toString()
+const baseUrl = env.COIN_GECKO_API
 const options = {
   method: 'GET',
   headers: {
@@ -23,8 +25,8 @@ export async function GET(
     return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 })
   }
 
-  const data = await response.json()
-  const cryptoDetail = {
+  const data: TCryptoData = await response.json()
+  const cryptoDetail: TCryptoDetail = {
     id: data.id,
     name: data.name,
     current_price: data.market_data.current_price.usd,
