@@ -1,7 +1,10 @@
 import { TCryptoPriceWithId, TCryptoDetail } from '@/types'
 import { env } from '@/env.mjs'
 
-const baseUrl = env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''
+const baseUrl =
+  env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : env.NEXT_PUBLIC_BASE_URL
 
 export async function fetchCryptoList(): Promise<Array<TCryptoPriceWithId>> {
   const response = await fetch(`${baseUrl}/api/cryptoData`)
