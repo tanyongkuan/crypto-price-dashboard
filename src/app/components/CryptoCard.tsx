@@ -23,7 +23,7 @@ const CryptoCard: React.FC<CryptoCardProps> = ({ data }) => {
   return (
     <Card className="group relative" onClick={handleClick}>
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold capitalize">{id}</h2>
+        <span className="text-xl font-semibold capitalize">{id}</span>
         <ExternalLink className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
       </div>
       <div className="flex items-center gap-2">

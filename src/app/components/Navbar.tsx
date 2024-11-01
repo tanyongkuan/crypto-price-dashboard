@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => (
         <Menu className="h-6 w-6" />
       </button>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-1 items-center justify-end gap-4">
         {/* Search Input */}
         <Input
           icon={SEARCH_ICON}
