@@ -20,7 +20,8 @@ export async function fetchCryptoDetail(id: string): Promise<TCryptoDetail> {
   const response = await fetch(`${baseUrl}/api/cryptoDetails/${id}`)
 
   if (!response.ok) {
-    throw new Error('Failed to fetch data')
+    // throw new Error('Failed to fetch data')
+    throw new Error(`Data for ${id} could not be retrieved.`)
   }
 
   return response.json()

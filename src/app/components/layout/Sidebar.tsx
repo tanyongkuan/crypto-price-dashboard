@@ -10,9 +10,11 @@ import {
   ChevronRight
 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 interface SidebarProps {
   isMobileSidebarOpen: boolean
+  setIsMobileSidebarOpen: (val: boolean) => void
   isCollapsed: boolean
   setIsCollapsed: (val: boolean) => void
 }
@@ -34,18 +36,41 @@ const navItems = [
 
 const Sidebar: React.FC<SidebarProps> = ({
   isMobileSidebarOpen,
+  setIsMobileSidebarOpen,
   isCollapsed,
   setIsCollapsed
 }) => {
   const pathname = usePathname()
 
+  // State to track when the component has mounted
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Close sidebar on mobile after refresh
+  useEffect(() => {
+    setIsMounted(true)
+    setIsMobileSidebarOpen(false)
+  }, [setIsMobileSidebarOpen])
+
+  // Handle link click to close the sidebar on mobile view
+  const handleLinkClick = () => {
+    if (window.innerWidth < 768) {
+      setIsMobileSidebarOpen(false)
+    }
+  }
+
   return (
     <>
       <aside
-        className={`fixed inset-y-0 left-0 z-20 flex flex-col bg-gray-800 text-white transition-all duration-300 ease-in-out ${isCollapsed ? 'w-16' : 'w-64'} ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+        className={`fixed inset-y-0 left-0 z-20 flex flex-col bg-gray-800 text-white transition-all duration-300 ease-in-out ${
+          isCollapsed ? 'w-16' : 'w-64'
+        } ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'} ${
+          isMounted ? 'block' : 'hidden'
+        } md:translate-x-0`}
       >
         <div
-          className={`flex h-16 items-center justify-between p-4 ${isCollapsed ? 'justify-center' : ''}`}
+          className={`flex h-16 items-center justify-between p-4 ${
+            isCollapsed ? 'justify-center' : ''
+          }`}
         >
           {!isCollapsed && (
             <div className="flex items-center gap-2">
@@ -74,7 +99,12 @@ const Sidebar: React.FC<SidebarProps> = ({
               <Link
                 key={item.label}
                 href={item.href}
-                className={`flex items-center gap-3 rounded-lg p-2 transition-colors ${isActive ? 'bg-gray-700 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'} ${isCollapsed ? 'justify-center' : ''}`}
+                onClick={handleLinkClick} // Close sidebar on link click for mobile
+                className={`flex items-center gap-3 rounded-lg p-2 transition-colors ${
+                  isActive
+                    ? 'bg-gray-700 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                } ${isCollapsed ? 'justify-center' : ''}`}
               >
                 {item.icon}
                 {!isCollapsed && <span>{item.label}</span>}

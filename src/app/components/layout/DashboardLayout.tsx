@@ -19,6 +19,7 @@ const DashboardLayout: React.FC<DashboardLayout> = ({ children }) => {
         isMobileSidebarOpen={isMobileSidebarOpen}
         isCollapsed={isCollapsed}
         setIsCollapsed={setIsCollapsed}
+        setIsMobileSidebarOpen={setIsMobileSidebarOpen}
       />
       <div
         className={`transition-margin flex-1 ${
