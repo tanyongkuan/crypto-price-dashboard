@@ -19,9 +19,12 @@ const config: Config = {
         white: {
           DEFAULT: 'white',
           dark: '#212a37'
+        },
+        gray: {
+          DEFAULT: '#e5e7eb',
+          light: '#4b5563',
+          dark: '#1f2937'
         }
-        // background: 'var(--background)',
-        // foreground: 'var(--foreground)'
       }
     }
   },

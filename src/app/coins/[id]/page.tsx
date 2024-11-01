@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 import CryptoDetailSkeleton from './components/CryptoDetailSkeleton'
 
 interface CryptoCoinPageProps {
-  params: Promise<{ id: string }> // Now params is explicitly an async Promise type
+  params: Promise<{ id: string }>
 }
 
 export default async function CryptoCoinPage({ params }: CryptoCoinPageProps) {

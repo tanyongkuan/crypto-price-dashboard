@@ -6,14 +6,14 @@ const CryptoCardSkeleton = () => {
   return (
     <Card className="group relative animate-pulse">
       <div className="flex items-center justify-between">
-        <div className="h-6 w-24 rounded bg-gray-200 dark:bg-gray-700" />
-        <div className="h-4 w-4 rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="bg-gray dark:bg-gray-dark h-6 w-24 rounded" />
+        <div className="bg-gray dark:bg-gray-dark h-4 w-4 rounded" />
       </div>
       <div className="mt-2 flex items-center gap-2">
-        <div className="h-8 w-32 rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="bg-gray dark:bg-gray-dark h-8 w-32 rounded" />
         <div className="flex items-center gap-1">
-          <div className="h-5 w-5 rounded bg-gray-200 dark:bg-gray-700" />
-          <div className="h-5 w-16 rounded bg-gray-200 dark:bg-gray-700" />
+          <div className="bg-gray dark:bg-gray-dark h-5 w-5 rounded" />
+          <div className="bg-gray dark:bg-gray-dark h-5 w-16 rounded" />
         </div>
       </div>
     </Card>

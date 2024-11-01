@@ -15,7 +15,7 @@ const Page: React.FC<PageProps> = ({ children, header, description }) => {
             <span className="text-2xl font-semibold sm:text-3xl">{header}</span>
           )}
           {description && (
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="dark:text-gray text-gray-light text-sm">
               {description}
             </p>
           )}

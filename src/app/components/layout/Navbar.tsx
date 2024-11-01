@@ -8,8 +8,8 @@ interface NavbarProps {
   toggleSidebar: () => void
 }
 
-const SEARCH_ICON = <Search className="h-6 w-6 text-gray-600" />
-const BELL_ICON = <Bell className="h-6 w-6 text-gray-600" />
+const SEARCH_ICON = <Search className="text-gray-light h-6 w-6" />
+const BELL_ICON = <Bell className="text-gray-light h-6 w-6" />
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => (
   <header className="sticky top-0 z-10 bg-white shadow-md">
@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => (
       {/* Mobile Menu Button */}
       <button
         onClick={toggleSidebar}
-        className="text-gray-600 focus:outline-none md:hidden"
+        className="text-gray-light focus:outline-none md:hidden"
         aria-label="Menu"
       >
         <Menu className="h-6 w-6" />

@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   return (
     <>
       <aside
-        className={`fixed inset-y-0 left-0 z-20 flex flex-col bg-gray-800 text-white transition-all duration-300 ease-in-out ${
+        className={`bg-gray-dark fixed inset-y-0 left-0 z-20 flex flex-col text-white transition-all duration-300 ease-in-out ${
           isCollapsed ? 'w-16' : 'w-64'
         } ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'} ${
           isMounted ? 'block' : 'hidden'
@@ -85,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <button
             aria-label="Collapse"
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden rounded-lg bg-gray-700 p-1.5 hover:bg-gray-700/90 md:block"
+            className="bg-gray-dark hover:bg-gray-dark/90 hidden rounded-lg p-1.5 md:block"
           >
             <ChevronRight
               className={`h-5 w-5 ${isCollapsed ? 'rotate-180' : ''}`}
@@ -102,8 +102,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                 onClick={handleLinkClick} // Close sidebar on link click for mobile
                 className={`flex items-center gap-3 rounded-lg p-2 transition-colors ${
                   isActive
-                    ? 'bg-gray-700 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-gray-dark text-white'
+                    : 'hover:bg-gray-dark text-gray-300 hover:text-white'
                 } ${isCollapsed ? 'justify-center' : ''}`}
               >
                 {item.icon}

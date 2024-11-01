@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({
       className={mergeClasses(
         'rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all dark:border-gray-800 dark:bg-gray-900',
         onClick
-          ? 'transform cursor-pointer transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-gray-300 hover:bg-white hover:shadow-md dark:hover:bg-gray-800'
+          ? 'dark:hover:bg-gray-dark transform cursor-pointer transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-gray-300 hover:bg-white hover:shadow-md'
           : '',
         className
       )}

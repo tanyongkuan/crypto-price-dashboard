@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <main className="flex min-h-screen bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+        <main className="bg-gray text-gray-dark dark:bg-gray-dark dark:text-gray flex min-h-screen">
           <DashboardLayout>{children}</DashboardLayout>
         </main>
       </body>

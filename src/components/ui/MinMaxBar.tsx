@@ -26,10 +26,10 @@ const MinMaxBar: React.FC<MinMaxBarProps> = ({
 
   return (
     <div className={mergeClasses('space-y-1', className)}>
-      <div className="relative h-2 w-full rounded-full bg-gray-200">
+      <div className="bg-gray relative h-2 w-full rounded-full">
         <div className="from-negative to-positive via-warning absolute h-full w-full rounded-full bg-gradient-to-r" />
         <div
-          className="absolute h-4 w-2 -translate-y-1 transform rounded-full bg-gray-800"
+          className="bg-gray-dark absolute h-4 w-2 -translate-y-1 transform rounded-full"
           style={{
             left: `${positionPercentage}%`
           }}
