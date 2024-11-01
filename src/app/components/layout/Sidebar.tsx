@@ -85,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <button
             aria-label="Collapse"
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="bg-gray-dark hover:bg-gray-dark/90 hidden rounded-lg p-1.5 md:block"
+            className="bg-gray-light hover:bg-gray-light/90 hidden rounded-lg p-1.5 md:block"
           >
             <ChevronRight
               className={`h-5 w-5 ${isCollapsed ? 'rotate-180' : ''}`}

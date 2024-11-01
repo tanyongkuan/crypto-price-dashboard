@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 import CryptoDetailSkeleton from './components/CryptoDetailSkeleton'
 
 interface CryptoCoinPageProps {
-  params: Promise<{ id: string }>
+  params: { id: string }
 }
 
 export default async function CryptoCoinPage({ params }: CryptoCoinPageProps) {
@@ -32,7 +32,7 @@ async function CryptoDetailContent({ id }: { id: string }) {
     try {
       initialData = await fetchCryptoDetail(id)
     } catch (err) {
-      console.error(err)
+      console.error('[CryptoDetailContent] Error:', err)
       errorMessage = `Data for ${id} could not be retrieved.`
     }
   }

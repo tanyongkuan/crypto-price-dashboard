@@ -17,16 +17,17 @@ const CryptoPageClient: React.FC<CryptoPageClientProps> = ({
   errorMessage
 }) => {
   const [cryptoData, setCryptoData] = useState(initialData)
-  const [error, setError] = useState(errorMessage)
+  const [error, setError] = useState<string | null>(errorMessage || null)
 
   const handleRefresh = useCallback(async () => {
     try {
       const newData = await fetchCryptoList() // Internal API endpoint for server fetch
       setCryptoData(newData)
-      setError('')
+      setError(null)
     } catch (error) {
       setError('Failed to fetch cryptocurrency data')
       console.error('Failed to refresh crypto data:', error)
+      console.error(`[CryptoPageClient] Failed to refresh crypto data:`, error)
     }
   }, [])
 

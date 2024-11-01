@@ -24,7 +24,7 @@ const CryptoCard: React.FC<CryptoCardProps> = ({ data }) => {
     <Card className="group relative" onClick={handleClick}>
       <div className="flex items-center justify-between">
         <span className="text-lg font-semibold capitalize sm:text-xl">
-          {id}
+          {id} / <span className="text-gray-light">USD</span>
         </span>
         <ExternalLink className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
       </div>

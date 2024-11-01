@@ -27,22 +27,26 @@ const CryptoDetailClient: React.FC<CryptoDetailClientProps> = ({
     try {
       const newData = await fetchCryptoDetail(id) // Internal API endpoint for server fetch
       setCryptoDetails(newData)
-      setError('')
+      setError(null)
     } catch (error) {
       setError('Failed to fetch cryptocurrency data')
-      console.error('Failed to refresh crypto data:', error)
+      console.error(
+        `[CryptoDetailClient] Failed to refresh data for ${id}:`,
+        error
+      )
     }
   }, [id])
 
   return (
     <>
       <ErrorMessage errorMessage={error} />
-      {Object.keys(cryptoDetails).length > 0 && (
+      {cryptoDetails && cryptoDetails.name && (
         <Card>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col">
               <h2 className="text-xl font-semibold capitalize">
-                {cryptoDetails.name}
+                {cryptoDetails.name} /{' '}
+                <span className="text-gray-light">USD</span>
               </h2>
               <span className="text-2xl font-semibold">
                 {formatCryptoCurrency(cryptoDetails.current_price)}

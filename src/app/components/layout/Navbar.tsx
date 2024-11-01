@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => (
         </button>
         {/* Avatar Menu */}
         <Image
-          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3276&q=80"
+          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
           alt="User Avatar"
           className="h-8 w-8 rounded-full"
           width={50}
