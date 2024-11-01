@@ -56,6 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         {/* Toggle Button */}
         <div className="absolute bottom-36 right-[-1rem]">
           <button
+            aria-label="Collapse"
             onClick={() => setIsCollapsed(!isCollapsed)}
             className="hidden rounded-lg bg-gray-700 p-1.5 hover:bg-gray-700/90 md:block"
           >

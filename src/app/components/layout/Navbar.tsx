@@ -16,6 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => (
       <button
         onClick={toggleSidebar}
         className="text-gray-600 focus:outline-none md:hidden"
+        aria-label="Menu"
       >
         <Menu className="h-6 w-6" />
       </button>
@@ -28,7 +29,13 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => (
           className="max-w-80"
         />
         {/* Notification Button */}
-        <button className="rounded-full hover:bg-gray-100">{BELL_ICON}</button>
+
+        <button
+          className="rounded-full hover:bg-gray-100"
+          aria-label="Notifications"
+        >
+          {BELL_ICON}
+        </button>
         {/* Avatar Menu */}
         <Image
           src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3276&q=80"

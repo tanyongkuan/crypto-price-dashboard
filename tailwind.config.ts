@@ -10,12 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        positive: { DEFAULT: '#08bf7f', hover: '#50D8A8' },
+        positive: { DEFAULT: '#08bf7f' },
         negative: {
-          DEFAULT: '#e35340',
-          dark: '#F65656',
-          hover: '#E56B5A',
-          'hover-dark': '#F56D6D'
+          DEFAULT: '#BF3726'
         },
         warning: { DEFAULT: '#f2c037', hover: '#F9D36A' },
         black: { DEFAULT: '#00000080', dark: 'white' },
