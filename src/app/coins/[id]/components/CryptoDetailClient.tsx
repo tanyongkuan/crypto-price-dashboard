@@ -4,8 +4,8 @@ import { useState, useCallback } from 'react'
 import { TCryptoDetail } from '@/types'
 import DataRefresher from '@/app/components/DataRefresher'
 import { fetchCryptoDetail } from '@/lib/fetchCryptoData'
-import StatsCard from './StatsCard'
-import CryptoMinMaxBar from './MinMaxBar'
+import MinMaxBar from '@/components/MinMaxBar'
+import { formatCryptoCurrency } from '@/lib/formatting'
 
 export default function CryptoDetailClient({
   id,
@@ -18,8 +18,6 @@ export default function CryptoDetailClient({
 }) {
   const [cryptoDetails, setCryptoDetails] = useState(initialData)
   const [error, setError] = useState<string | null>(errorMessage)
-
-  console.log(cryptoDetails)
 
   const handleRefresh = useCallback(async () => {
     try {
@@ -44,28 +42,20 @@ export default function CryptoDetailClient({
                 {cryptoDetails.name}
               </span>
               <span className="text-3xl font-bold">
-                ${cryptoDetails.current_price.toFixed(2)}
+                {formatCryptoCurrency(cryptoDetails.current_price)}
               </span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-bold capitalize">
                 {cryptoDetails.name} statistics
               </span>
-              <CryptoMinMaxBar
-                min={+cryptoDetails.low_24h.toFixed(2)}
-                max={+cryptoDetails.high_24h.toFixed(2)}
-                current={+cryptoDetails.current_price.toFixed(2)}
+              <MinMaxBar
+                min={cryptoDetails.low_24h}
+                max={cryptoDetails.high_24h}
+                current={cryptoDetails.current_price}
+                label="24h Range"
+                formatter={formatCryptoCurrency}
               />
-              <div className="flex flex-col gap-4 md:flex-row">
-                <StatsCard
-                  title="24h High"
-                  content={`$${cryptoDetails.high_24h.toFixed(2)}`}
-                />
-                <StatsCard
-                  title="24h Low"
-                  content={`$${cryptoDetails.low_24h.toFixed(2)}`}
-                />
-              </div>
             </div>
           </div>
         </>
