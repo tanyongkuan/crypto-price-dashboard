@@ -33,11 +33,13 @@ const CryptoPageClient: React.FC<CryptoPageClientProps> = ({
   return (
     <>
       <ErrorMessage errorMessage={error} />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] xl:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
-        {cryptoData.map((crypto, index) => (
-          <CryptoCard key={index} data={crypto} />
-        ))}
-      </div>
+      {cryptoData.length > 0 && (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] xl:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
+          {cryptoData.map((crypto, index) => (
+            <CryptoCard key={index} data={crypto} />
+          ))}
+        </div>
+      )}
       <DataRefresher
         onRefresh={handleRefresh}
         interval={120000}

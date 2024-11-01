@@ -1,3 +1,5 @@
+'use client'
+
 import { Input } from '@/components/ui/Input'
 import { Menu, Bell, Search } from 'lucide-react'
 import Image from 'next/image'

@@ -1,16 +1,16 @@
 import CryptoDetailClient from './components/CryptoDetailClient'
 import { fetchCryptoDetail } from '@/lib/fetchCryptoData'
-import { isCryptoAllowed } from '@/lib/cryptoUtils'
+import { isCryptoAllowed } from '@/lib/utils'
 import { TCryptoDetail } from '@/types'
 import Page from '@/components/ui/Page'
 import { Suspense } from 'react'
 import CryptoDetailSkeleton from './components/CryptoDetailSkeleton'
 
-export default async function CryptoCoinPage({
-  params
-}: {
-  params: Promise<{ id: string }>
-}) {
+interface CryptoCoinPageProps {
+  params: Promise<{ id: string }> // Now params is explicitly an async Promise type
+}
+
+export default async function CryptoCoinPage({ params }: CryptoCoinPageProps) {
   const { id } = await params
 
   return (
@@ -22,7 +22,7 @@ export default async function CryptoCoinPage({
   )
 }
 
-export async function CryptoDetailContent({ id }: { id: string }) {
+async function CryptoDetailContent({ id }: { id: string }) {
   let initialData = {} as TCryptoDetail
   let errorMessage = ''
 

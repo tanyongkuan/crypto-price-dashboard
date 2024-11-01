@@ -17,19 +17,4 @@ export const formatCryptoCurrency = (value: number): string => {
     minimumFractionDigits: decimalPlaces,
     maximumFractionDigits: decimalPlaces
   })}`
-  //     if (value >= 1) {
-  //         // For values >= 1, use 2 decimal places
-  //         return `${value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })}`;
-  //       } else if (value > 0.0001) {
-  //         // For values between 0.0001 and 1, use 4 decimal places
-  //         return value.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 8 });
-  //       } else {
-  //         // For values <= 0.0001, use up to 8 decimal places
-  //         return value.toLocaleString(undefined, { minimumFractionDigits: 6, maximumFractionDigits: 8 });
-  //       }
-
-  //   return `$${value.toLocaleString(undefined, {
-  //     minimumFractionDigits: 2,
-  //     maximumFractionDigits: 2
-  //   })}`
 }

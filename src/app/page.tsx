@@ -18,7 +18,7 @@ export default async function CryptoPage() {
   )
 }
 
-export async function CryptoDashboardContent() {
+async function CryptoDashboardContent() {
   let initialData = {} as Array<TCryptoPriceWithId>
   let errorMessage = ''
 
