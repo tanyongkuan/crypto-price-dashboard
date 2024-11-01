@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from 'react'
 import Sidebar from './Sidebar'
-import Header from './Header'
+import Navbar from './Navbar'
 
 type DashboardLayout = {
   children: React.ReactNode
@@ -25,9 +25,9 @@ const DashboardLayout: React.FC<DashboardLayout> = ({ children }) => {
           isCollapsed ? 'md:ml-16' : 'md:ml-64'
         }`}
       >
-        <Header toggleSidebar={toggleSidebar} />
+        <Navbar toggleSidebar={toggleSidebar} />
 
-        <div className="p-8">
+        <div className="p-4 md:p-8">
           <Suspense
             fallback={
               <div className="flex min-h-screen items-center justify-center">
