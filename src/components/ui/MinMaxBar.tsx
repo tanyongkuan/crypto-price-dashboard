@@ -1,7 +1,9 @@
 'use client'
+import { mergeClasses } from '@/lib/utils'
 import React, { useMemo } from 'react'
 
 interface MinMaxBarProps {
+  className?: string
   min: number
   max: number
   current: number
@@ -14,7 +16,8 @@ const MinMaxBar: React.FC<MinMaxBarProps> = ({
   max,
   current,
   label,
-  formatter
+  formatter,
+  className
 }) => {
   const positionPercentage = useMemo(() => {
     if (max === min) return 0 // Avoid division by zero
@@ -22,7 +25,7 @@ const MinMaxBar: React.FC<MinMaxBarProps> = ({
   }, [min, max, current])
 
   return (
-    <div className="space-y-1">
+    <div className={mergeClasses('space-y-1', className)}>
       <div className="relative h-2 w-full rounded-full bg-gray-200">
         <div className="from-negative to-positive via-warning absolute h-full w-full rounded-full bg-gradient-to-r" />
         <div

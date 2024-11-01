@@ -4,11 +4,11 @@ import { Suspense, useState } from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
 
-export default function DashboardLayout({
-  children
-}: Readonly<{
+type DashboardLayout = {
   children: React.ReactNode
-}>) {
+}
+
+const DashboardLayout: React.FC<DashboardLayout> = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
   const toggleSidebar = () => setIsMobileSidebarOpen(!isMobileSidebarOpen)
@@ -35,9 +35,6 @@ export default function DashboardLayout({
               </div>
             }
           >
-            {/* Children content here */}
-            {/* <h1 className="mb-4 text-2xl font-semibold">Dashboard</h1>
-            <p>Welcome to your responsive dashboard!</p> */}
             {children}
           </Suspense>
         </div>
@@ -53,3 +50,5 @@ export default function DashboardLayout({
     </>
   )
 }
+
+export default DashboardLayout

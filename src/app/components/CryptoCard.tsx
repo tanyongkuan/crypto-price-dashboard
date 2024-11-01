@@ -2,6 +2,9 @@
 
 import { useRouter } from 'next/navigation'
 import { TCryptoPriceWithId } from '@/types'
+import { formatCryptoCurrency } from '@/lib/formatting'
+import { Card } from '@/components/ui/Card'
+import { ExternalLink } from 'lucide-react'
 
 interface CryptoCardProps {
   data: TCryptoPriceWithId
@@ -18,15 +21,17 @@ const CryptoCard: React.FC<CryptoCardProps> = ({ data }) => {
   }
 
   return (
-    <div
-      onClick={handleClick}
-      className="transform cursor-pointer rounded-lg border border-gray-200 bg-gray-50 p-4 text-lg shadow-sm transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-gray-300 hover:bg-white hover:shadow-md"
-    >
-      <h3 className="mb-2 font-medium capitalize">{id}</h3>
+    <Card className="group relative" onClick={handleClick}>
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold capitalize">{id}</h2>
+        <ExternalLink className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+      </div>
       <div className="flex items-center gap-2">
-        <span className="font-medium">${usd.toLocaleString()}</span>
+        <span className="text-2xl font-semibold">
+          {formatCryptoCurrency(usd)}
+        </span>
         <span
-          className={`flex items-center font-medium ${isProfit() ? 'text-green-500' : 'text-red-500'}`}
+          className={`flex items-center font-medium ${isProfit() ? 'text-positive' : 'text-negative'}`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +44,7 @@ const CryptoCard: React.FC<CryptoCardProps> = ({ data }) => {
           {Math.abs(usd_24h_change ?? 0).toFixed(2)}%
         </span>
       </div>
-    </div>
+    </Card>
   )
 }
 

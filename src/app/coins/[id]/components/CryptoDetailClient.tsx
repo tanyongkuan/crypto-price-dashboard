@@ -2,10 +2,12 @@
 
 import { useState, useCallback } from 'react'
 import { TCryptoDetail } from '@/types'
-import DataRefresher from '@/app/components/DataRefresher'
+import DataRefresher from '@/components/DataRefresher'
 import { fetchCryptoDetail } from '@/lib/fetchCryptoData'
-import MinMaxBar from '@/components/MinMaxBar'
+import MinMaxBar from '@/components/ui/MinMaxBar'
 import { formatCryptoCurrency } from '@/lib/formatting'
+import Page from '@/components/ui/Page'
+import { Card } from '@/components/ui/Card'
 
 export default function CryptoDetailClient({
   id,
@@ -23,6 +25,7 @@ export default function CryptoDetailClient({
     try {
       const newData = await fetchCryptoDetail(id) // Internal API endpoint for server fetch
       setCryptoDetails(newData)
+      setError('')
     } catch (error) {
       setError('Failed to fetch cryptocurrency data')
       console.error('Failed to refresh crypto data:', error)
@@ -31,36 +34,36 @@ export default function CryptoDetailClient({
 
   return (
     <>
-      {error && <div className="text-red-500">{error}</div>}
-
-      {!cryptoDetails && !error && <div className="p-4">Loading...</div>}
-      {Object.keys(cryptoDetails).length > 0 && (
-        <>
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col">
-              <span className="text-xl font-semibold">
-                {cryptoDetails.name}
-              </span>
-              <span className="text-3xl font-bold">
-                {formatCryptoCurrency(cryptoDetails.current_price)}
-              </span>
+      <Page header="Summary" error={error}>
+        {!cryptoDetails && !error && <div className="p-4">Loading...</div>}
+        {Object.keys(cryptoDetails).length > 0 && (
+          <Card>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col">
+                <h2 className="text-xl font-semibold capitalize">
+                  {cryptoDetails.name}
+                </h2>
+                <span className="text-2xl font-semibold">
+                  {formatCryptoCurrency(cryptoDetails.current_price)}
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-medium capitalize">
+                  {cryptoDetails.name} statistics
+                </span>
+                <MinMaxBar
+                  className="max-w-3xl"
+                  min={cryptoDetails.low_24h}
+                  max={cryptoDetails.high_24h}
+                  current={cryptoDetails.current_price}
+                  label="24h Range"
+                  formatter={formatCryptoCurrency}
+                />
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <span className="font-bold capitalize">
-                {cryptoDetails.name} statistics
-              </span>
-              <MinMaxBar
-                min={cryptoDetails.low_24h}
-                max={cryptoDetails.high_24h}
-                current={cryptoDetails.current_price}
-                label="24h Range"
-                formatter={formatCryptoCurrency}
-              />
-            </div>
-          </div>
-        </>
-      )}
-
+          </Card>
+        )}
+      </Page>
       {/* Use DataRefresher to auto-refresh every 2 minutes */}
       <DataRefresher
         onRefresh={handleRefresh}
