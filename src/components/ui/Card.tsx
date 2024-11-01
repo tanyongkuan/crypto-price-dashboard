@@ -9,7 +9,7 @@ type CardProps = {
   onClick?: () => void
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'className' | 'onClick'>
 
-export const Card: React.FC<CardProps> = ({
+const Card: React.FC<CardProps> = ({
   children,
   className,
   onClick,
@@ -31,3 +31,4 @@ export const Card: React.FC<CardProps> = ({
     </div>
   )
 }
+export default Card

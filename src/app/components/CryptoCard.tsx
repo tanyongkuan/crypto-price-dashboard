@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { TCryptoPriceWithId } from '@/types'
 import { formatCryptoCurrency } from '@/lib/formatting'
-import { Card } from '@/components/ui/Card'
+import Card from '@/components/ui/Card'
 import { ExternalLink } from 'lucide-react'
 
 interface CryptoCardProps {
