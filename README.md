@@ -80,8 +80,11 @@ This command starts the development server on http://localhost:3000.
 ## Assumptions
 
 - **Predefined Cryptocurrencies**: The list of cryptocurrencies is predefined on environment variables.
+- **Values For Pricing Listing**: To retrieve Cryptocurrency name, Current price in USD and Percentage change in price over the last 24 hours
+- **Values For Cryptocurrencies Details**: To retrieve Current price, 24-hour high and low prices
 - **Automatic Data Refresh**: The dashboard automatically refreshes every 2 minutes to update prices. This interval is configurable in the `DataRefresher` component.
 - **Error Handling**: If there’s an error fetching data, it’s assumed that showing a single error banner in the header will provide sufficient feedback to users.
+- **Dashboard Layout**: Dashboard layout is for visual purpose therefore not all the functions will work.
 
 ## About Me
 
