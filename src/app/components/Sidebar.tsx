@@ -5,8 +5,7 @@ import {
   Newspaper,
   Briefcase,
   Layout,
-  ChevronRight,
-  ChevronLeft
+  ChevronRight
 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
@@ -16,26 +15,27 @@ interface SidebarProps {
   setIsCollapsed: (val: boolean) => void
 }
 
+const navItems = [
+  { icon: <Home className="h-6 w-6" />, label: 'Home', href: '/' },
+  {
+    icon: <BarChart2 className="h-6 w-6" />,
+    label: 'Market',
+    href: '/#'
+  },
+  { icon: <Newspaper className="h-6 w-6" />, label: 'News', href: '/#' },
+  {
+    icon: <Briefcase className="h-6 w-6" />,
+    label: 'Portfolio',
+    href: '/#'
+  }
+]
+
 const Sidebar: React.FC<SidebarProps> = ({
   isMobileSidebarOpen,
   isCollapsed,
   setIsCollapsed
 }) => {
   const pathname = usePathname()
-  const navItems = [
-    { icon: <Home className="h-6 w-6" />, label: 'Home', href: '/' },
-    {
-      icon: <BarChart2 className="h-6 w-6" />,
-      label: 'Market',
-      href: '/#'
-    },
-    { icon: <Newspaper className="h-6 w-6" />, label: 'News', href: '/#' },
-    {
-      icon: <Briefcase className="h-6 w-6" />,
-      label: 'Portfolio',
-      href: '/#'
-    }
-  ]
 
   return (
     <>
@@ -52,17 +52,16 @@ const Sidebar: React.FC<SidebarProps> = ({
             </div>
           )}
           {isCollapsed && <Layout className="h-6 w-6" />}
-
-          {/* Toggle Button */}
+        </div>
+        {/* Toggle Button */}
+        <div className="absolute bottom-36 right-[-1rem]">
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden rounded-lg p-1.5 hover:bg-gray-700 md:block"
+            className="hidden rounded-lg bg-gray-700 p-1.5 hover:bg-gray-700/90 md:block"
           >
-            {isCollapsed ? (
-              <ChevronRight className="h-5 w-5" />
-            ) : (
-              <ChevronLeft className="h-5 w-5" />
-            )}
+            <ChevronRight
+              className={`h-5 w-5 ${isCollapsed ? 'rotate-180' : ''}`}
+            />
           </button>
         </div>
         <nav className="mt-6 flex flex-1 flex-col gap-2 px-2">
