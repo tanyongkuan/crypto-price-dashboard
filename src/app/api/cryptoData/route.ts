@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import { env } from '@/env.mjs'
 
 const CURRENCY = 'usd'
-const PRECISION = '2'
+// const PRECISION = '2'
 
 const baseUrl = env.COIN_GECKO_API
 const options = {
@@ -20,7 +20,7 @@ export async function GET() {
   }
 
   const response = await fetch(
-    `${baseUrl}/simple/price?ids=${env.ALLOWED_CRYPTOS}&vs_currencies=${CURRENCY}&precision=${PRECISION}&include_24hr_change=true&include_last_updated_at=true`,
+    `${baseUrl}/simple/price?ids=${env.ALLOWED_CRYPTOS}&vs_currencies=${CURRENCY}&include_24hr_change=true&include_last_updated_at=true`,
     options
   )
 
@@ -29,6 +29,7 @@ export async function GET() {
   }
 
   const data: TCryptoPriceResponse = await response.json()
+  console.log(data)
   const cryptoArray: Array<TCryptoPriceWithId> = Object.entries(data).map(
     ([id, details]) => ({
       id,

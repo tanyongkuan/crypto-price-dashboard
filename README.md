@@ -72,7 +72,6 @@ This command starts the development server on http://localhost:3000.
 
 ## Design Decisions
 
-- **Dynamic Decimal Precision**: Cryptocurrency prices vary significantly in magnitude, so the `formatCrypto` utility dynamically adjusts decimal places based on the value’s size.
 - **Modular Components**: Components like `MinMaxBar` and `CryptoCard` accept props (e.g., `formatter`, `label`) for flexible data display, enabling them to be reused across the application.
 - **Client-Side Only Features**: Interactivity such as hover animations and real-time updates require `"use client"` in specific components (e.g., `CryptoCard`, `MinMaxBar`).
 - **Centralized Error Display**: Errors encountered during data fetching are shown at the top of the dashboard for easy user visibility.
@@ -81,8 +80,8 @@ This command starts the development server on http://localhost:3000.
 ## Assumptions
 
 - **Predefined Cryptocurrencies**: The list of cryptocurrencies is predefined on environment variables.
-- **Values For Pricing Listing**: To retrieve Cryptocurrency name, Current price in USD and Percentage change in price over the last 24 hours
-- **Values For Cryptocurrencies Details**: To retrieve Current price, 24-hour high and low prices
+- **Values For Pricing Listing**: To retrieve Cryptocurrency name, Current price in USD and Percentage change in price over the last 24 hours via `/simple/price`
+- **Values For Cryptocurrencies Details**: To retrieve Current price, 24-hour high and low prices via `/coins/${id}`. The market price retrieved is different from `/simple/price`
 - **Automatic Data Refresh**: The dashboard automatically refreshes every 2 minutes to update prices. This interval is configurable in the `DataRefresher` component.
 - **Error Handling**: If there’s an error fetching data, it’s assumed that showing a single error banner in the header will provide sufficient feedback to users.
 - **Dashboard Layout**: Dashboard layout is for visual purpose therefore not all the functions will work.
