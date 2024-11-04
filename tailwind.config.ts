@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        positive: { DEFAULT: '#08bf7f' },
+        positive: { DEFAULT: '#057f54' },
         negative: {
           DEFAULT: '#BF3726'
         },
