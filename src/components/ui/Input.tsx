@@ -7,9 +7,7 @@ type InputProps = {
   icon: React.ReactNode | JSX.Element
   type?: string
   placeholder?: string
-  className?: string
-  onClick?: () => void
-} & Omit<React.HTMLAttributes<HTMLDivElement>, 'className' | 'onClick'>
+} & React.HTMLAttributes<HTMLInputElement>
 
 export const Input: React.FC<InputProps> = ({
   icon,

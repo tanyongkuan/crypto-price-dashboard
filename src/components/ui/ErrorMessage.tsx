@@ -1,5 +1,3 @@
-'use client'
-
 type ErrorMessageProps = {
   errorMessage: string | null
 }
