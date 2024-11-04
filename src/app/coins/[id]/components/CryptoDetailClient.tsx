@@ -25,8 +25,16 @@ const CryptoDetailClient: React.FC<CryptoDetailClientProps> = ({
 
   const handleRefresh = useCallback(async () => {
     try {
-      const newData = await fetchCryptoDetail(id) // Internal API endpoint for server fetch
-      setCryptoDetails(newData)
+      const newData = await fetchCryptoDetail(id)
+
+      setCryptoDetails((prev) => {
+        if (JSON.stringify(prev) === JSON.stringify(newData)) {
+          return prev // No change, prevent unnecessary rerender
+        }
+
+        return newData
+      })
+
       setError(null)
     } catch (error) {
       setError('Failed to fetch cryptocurrency data')
@@ -71,7 +79,6 @@ const CryptoDetailClient: React.FC<CryptoDetailClientProps> = ({
       {/* Use DataRefresher to auto-refresh every 2 minutes */}
       <DataRefresher
         onRefresh={handleRefresh}
-        interval={120000}
         skipInitialFetch
         enabled={!error}
       />

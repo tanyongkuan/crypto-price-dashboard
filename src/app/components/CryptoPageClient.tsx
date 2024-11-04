@@ -21,8 +21,16 @@ const CryptoPageClient: React.FC<CryptoPageClientProps> = ({
 
   const handleRefresh = useCallback(async () => {
     try {
-      const newData = await fetchCryptoList() // Internal API endpoint for server fetch
-      setCryptoData(newData)
+      const newData = await fetchCryptoList()
+
+      setCryptoData((prev) => {
+        if (JSON.stringify(prev) === JSON.stringify(newData)) {
+          return prev // No change, prevent unnecessary rerender
+        }
+
+        return newData
+      })
+
       setError(null)
     } catch (error) {
       setError('Failed to fetch cryptocurrency data')
@@ -43,7 +51,6 @@ const CryptoPageClient: React.FC<CryptoPageClientProps> = ({
       )}
       <DataRefresher
         onRefresh={handleRefresh}
-        interval={120000}
         skipInitialFetch
         enabled={!error}
       />
