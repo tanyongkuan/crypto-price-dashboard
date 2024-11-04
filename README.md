@@ -76,6 +76,7 @@ This command starts the development server on http://localhost:3000.
 - **Modular Components**: Components like `MinMaxBar` and `CryptoCard` accept props (e.g., `formatter`, `label`) for flexible data display, enabling them to be reused across the application.
 - **Client-Side Only Features**: Interactivity such as hover animations and real-time updates require `"use client"` in specific components (e.g., `CryptoCard`, `MinMaxBar`).
 - **Centralized Error Display**: Errors encountered during data fetching are shown at the top of the dashboard for easy user visibility.
+- **Internal API route to call CoinGecko API**: Improve API security by hiding CoinGecko API key and sensitive information when calling it on data refresh during Client Side Rendering (CSR)
 
 ## Assumptions
 
